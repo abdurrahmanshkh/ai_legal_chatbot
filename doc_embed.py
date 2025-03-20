@@ -40,8 +40,9 @@ print("Generated embeddings for", len(embeddings_list), "chunks.")
 # Step 5: Store the embeddings
 from langchain_community.vectorstores import FAISS
 
-# Create a FAISS index from your documents and embeddings
+print("Creating FAISS index from documents and embeddings...")
 vector_store = FAISS.from_documents(docs, embedding_model)
+print("FAISS index created.")
 
 # Step  6: Verifying the FAISS Index
 # Define a sample query that you might ask the chatbot
