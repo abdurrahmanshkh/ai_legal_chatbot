@@ -1,14 +1,22 @@
-# new_file_using_saved_vector_store.py
+# saved_doc_with_no_ssl_verify.py
+
+import os
+# Disable SSL certificate verification for Hugging Face Hub downloads.
+os.environ['HF_HUB_DISABLE_SSL_VERIFY'] = "1"
 
 # Step 1: Load the embedding model
 from langchain_huggingface import HuggingFaceEmbeddings
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 print("Model loaded successfully!")
 
-# Step 2: Load the saved FAISS index from disk
+# Step 2: Load the saved FAISS index from disk with dangerous deserialization allowed
 from langchain_community.vectorstores import FAISS
 print("Loading FAISS index from disk...")
-vector_store = FAISS.load_local("embeddings/faiss_index_directory", embedding_model)
+vector_store = FAISS.load_local(
+    "embeddings/faiss_index_directory", 
+    embedding_model, 
+    allow_dangerous_deserialization=True
+)
 print("FAISS index loaded successfully.")
 
 # Step 3: Create a retriever object
@@ -36,7 +44,6 @@ prompt = PromptTemplate(input_variables=["context", "input"], template=prompt_te
 print("Prompt template created successfully.")
 
 # Step 5: Initialize the language model and build the retrieval chain using the new API
-import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain.chains import create_retrieval_chain
