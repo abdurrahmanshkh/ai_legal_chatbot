@@ -72,15 +72,43 @@ def get_gemini_response(context, query):
     response = model.generate_content(prompt_with_context)
     return response.text if response.text else "I do not have enough information to answer that." #Consistent return
 
-# Step 6: Define and process a sample legal query
-sample_query = "What is a petition and is it different from a plaint?"
-print(f"Processing query: {sample_query}")
+def process_query(query):
+    """
+    Process a single query and return the answer.
+    
+    Args:
+        query (str): The user's question
+        
+    Returns:
+        str: The model's response
+    """
+    print(f"\nProcessing query: {query}")
+    docs = retriever.invoke(query)
+    context = "\n".join([doc.page_content for doc in docs])
+    answer = get_gemini_response(context, query)
+    return answer
 
-# Get relevant documents from the vector store
-docs = retriever.invoke(sample_query)
-context = "\n".join([doc.page_content for doc in docs])
+def main():
+    print("\nWelcome to the Indian Legal Assistant!")
+    print("Enter your legal questions (type 'quit' or 'exit' to end the session)")
+    
+    while True:
+        query = input("\nYour question: ").strip()
+        
+        if query.lower() in ['quit', 'exit']:
+            print("Thank you for using the Indian Legal Assistant. Goodbye!")
+            break
+            
+        if not query:
+            print("Please enter a valid question.")
+            continue
+            
+        try:
+            answer = process_query(query)
+            print("\nAnswer:", answer)
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+            print("Please try again with a different question.")
 
-# Get the response from Gemini
-answer = get_gemini_response(context, sample_query)
-print("Query processed successfully.")
-print("Answer:", answer)
+if __name__ == "__main__":
+    main()
