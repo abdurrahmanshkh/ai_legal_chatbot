@@ -54,7 +54,7 @@ def main():
     logger.info("Embedding model loaded successfully.")
 
     # --- Step 2: Load JSONL data
-    jsonl_path = Path("data.jsonl")
+    jsonl_path = Path("cleaned_data/combined.jsonl")
     records = load_jsonl(jsonl_path, logger)
 
     # --- Step 3: Convert to Documents
