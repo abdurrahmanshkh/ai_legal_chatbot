@@ -15,7 +15,7 @@ print("Model loaded successfully!")
 # Step 2: Load the saved FAISS index from disk with dangerous deserialization allowed
 print("Loading FAISS index from disk...")
 vector_store = FAISS.load_local(
-    "embeddings/faiss_index_directory_2",
+    "embeddings/faiss_index_directory_3",
     embedding_model,
     allow_dangerous_deserialization=True
 )

@@ -49,7 +49,7 @@ retriever = vector_store.as_retriever(search_kwargs={"k": 3})
 print("Retriever object created successfully.")
 
 # Step 7: Save the FAISS index to disk
-vector_store.save_local("embeddings/faiss_index_directory_2")
+vector_store.save_local("embeddings/faiss_index_directory_3")
 print("FAISS index saved.")
 
 # Step 7: Define the prompt template for your legal assistant
