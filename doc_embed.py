@@ -16,10 +16,14 @@ for filepath in glob.glob("cleaned_data/*.txt"):
 print(f"Number of loaded documents: {len(all_documents)}")
 
 # Step 3: Split the documents into smaller chunks
-from langchain.text_splitter import CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Split into chunks of 1000 characters with an overlap of 100 characters
-text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=100,
+    separators=["\n\n", "\n", " ", ""]
+)
 docs = text_splitter.split_documents(all_documents)
 print(f"Number of chunks: {len(docs)}")
 
