@@ -25,7 +25,7 @@ app = FastAPI(
 # Step 1: Load embedding model and FAISS index
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vector_store = FAISS.load_local(
-    "embeddings/faiss_index_directory_2",
+    "embeddings/faiss_index_directory_3",
     embedding_model,
     allow_dangerous_deserialization=True
 )
