@@ -20,8 +20,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Split into chunks of 1000 characters with an overlap of 100 characters
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,
-    chunk_overlap=100,
+    chunk_size=2000,
+    chunk_overlap=2000,
     separators=["\n\n", "\n", " ", ""]
 )
 docs = text_splitter.split_documents(all_documents)
@@ -49,7 +49,7 @@ retriever = vector_store.as_retriever(search_kwargs={"k": 3})
 print("Retriever object created successfully.")
 
 # Step 7: Save the FAISS index to disk
-vector_store.save_local("embeddings/faiss_index_directory_3")
+vector_store.save_local("embeddings/faiss_index_directory_6")
 print("FAISS index saved.")
 
 # Step 7: Define the prompt template for your legal assistant

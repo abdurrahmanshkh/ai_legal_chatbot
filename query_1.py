@@ -15,7 +15,7 @@ print("Model loaded successfully!")
 # Step 2: Load the saved FAISS index from disk with dangerous deserialization allowed
 print("Loading FAISS index from disk...")
 vector_store = FAISS.load_local(
-    "embeddings/faiss_index_directory_3",
+    "embeddings/faiss_index_directory_6",
     embedding_model,
     allow_dangerous_deserialization=True
 )
@@ -23,7 +23,7 @@ print("FAISS index loaded successfully.")
 
 # Step 3: Create a retriever object
 print("Creating retriever object...")
-retriever = vector_store.as_retriever(search_kwargs={"k": 3})
+retriever = vector_store.as_retriever(search_kwargs={"k": 10})
 print("Retriever object created successfully.")
 
 # Step 4: Define the prompt template for your legal assistant
