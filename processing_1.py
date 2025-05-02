@@ -20,8 +20,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Split into chunks of 1000 characters with an overlap of 100 characters
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=2000,
-    chunk_overlap=2000,
+    chunk_size=1000,
+    chunk_overlap=500,
     separators=["\n\n", "\n", " ", ""]
 )
 docs = text_splitter.split_documents(all_documents)
