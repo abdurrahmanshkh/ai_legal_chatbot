@@ -2,8 +2,12 @@ langchain
 transformers
 faiss-cpu
 sentence-transformers
-flask       # optional: for building a web interface
-streamlit   # optional: if you want a quick UI for your chatbot
+flask
+streamlit
 langchain-community
 langchain_huggingface
 langchain-openai
+fastapi
+pydantic
+python-dotenv
+google-generativeai
