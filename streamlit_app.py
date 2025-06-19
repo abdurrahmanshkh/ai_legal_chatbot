@@ -217,23 +217,6 @@ h1 {
     margin-top: 0.5rem;
 }
 
-/* Toggle button */
-.sidebar-toggle {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 100;
-    background: var(--primary) !important;
-    color: white !important;
-    border-radius: 8px !important;
-    padding: 0.5rem 0.75rem !important;
-    min-width: auto !important;
-}
-
-.sidebar-toggle:hover {
-    background: var(--primary-dark) !important;
-}
-
 /* Welcome message */
 .welcome-message {
     padding: 1.5rem;
@@ -257,11 +240,6 @@ st.markdown("<h1 style='color: #0B1D51;'>⚖️ iLegalBot</h1>",
             unsafe_allow_html=True)
 st.caption("<p style='text-align:center; color:#64748b; margin-bottom:1.5rem; font-size:1.1rem;'>AI Legal Assistant for Indian Law</p>",
            unsafe_allow_html=True)
-
-# Sidebar toggle button
-if st.button("☰", key="sidebar-toggle", help="Toggle sidebar"):
-    st.session_state.sidebar_state = not st.session_state.get(
-        "sidebar_state", True)
 
 # Sidebar configuration
 sidebar_state = st.session_state.get("sidebar_state", True)
