@@ -253,7 +253,7 @@ h1 {
 """, unsafe_allow_html=True)
 
 # App title and header
-st.markdown("<h1 style='color: var(--primary-dark);'>⚖️ iLegalBot</h1>",
+st.markdown("<h1 style='color: #0B1D51;'>⚖️ iLegalBot</h1>",
             unsafe_allow_html=True)
 st.caption("<p style='text-align:center; color:#64748b; margin-bottom:1.5rem; font-size:1.1rem;'>AI Legal Assistant for Indian Law</p>",
            unsafe_allow_html=True)
