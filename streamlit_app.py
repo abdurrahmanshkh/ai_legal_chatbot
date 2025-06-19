@@ -35,7 +35,7 @@ st.markdown("""
     --user-bg: #dbeafe;
     --bot-bg: #f1f5f9;
     --border: #e2e8f0;
-    --sidebar-bg: #b7d7f7;
+    --sidebar-bg: #c3ddf7;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
