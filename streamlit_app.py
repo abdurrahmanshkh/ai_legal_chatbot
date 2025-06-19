@@ -22,60 +22,65 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Modern CSS styling
+# Modern CSS styling with blue/gray theme
 st.markdown("""
 <style>
 :root {
-    --primary: #4f46e5;
-    --primary-dark: #3730a3;
-    --secondary: #f9fafb;
-    --text: #1f2937;
-    --text-light: #6b7280;
-    --user-bg: #e0e7ff;
-    --bot-bg: #f3f4f6;
-    --border: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    --secondary: #f8fafc;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --user-bg: #dbeafe;
+    --bot-bg: #f1f5f9;
+    --border: #e2e8f0;
+    --sidebar-bg: #f1f5f9;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 * {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .stApp {
-    background-color: #f9fafb;
+    background-color: #f8fafc;
 }
 
-header {
-    visibility: hidden;
+/* Header styling */
+.st-emotion-cache-1avcm0n {
+    background-color: var(--primary-dark) !important;
 }
 
 h1 {
     color: var(--primary-dark);
     text-align: center;
     font-weight: 700;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+    font-size: 2.25rem !important;
 }
 
 /* Sidebar styling */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
     padding: 1.5rem 1rem;
 }
 
-[data-testid="stSidebar"] h1 {
-    color: white !important;
-    font-size: 1.5rem;
-    margin-bottom: 2rem !important;
+[data-testid="stSidebar"] h2 {
+    color: var(--primary-dark) !important;
+    margin-bottom: 1.5rem !important;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 0.5rem;
 }
 
 [data-testid="stSidebar"] .stSelectbox label {
-    color: white !important;
+    color: var(--text) !important;
     font-weight: 500;
 }
 
 [data-testid="stSelectbox"] {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: white;
     border-radius: 8px;
     padding: 0.5rem;
 }
@@ -84,7 +89,7 @@ h1 {
 .chat-container {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - 180px);
     padding: 1rem 0;
 }
 
@@ -93,7 +98,7 @@ h1 {
     overflow-y: auto;
     padding: 1.5rem;
     background-color: white;
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
     border: 1px solid var(--border);
@@ -101,13 +106,14 @@ h1 {
 
 /* Message styling */
 .message {
-    padding: 1rem 1.25rem;
-    border-radius: 18px;
+    padding: 1.25rem;
+    border-radius: 12px;
     margin-bottom: 1.25rem;
-    max-width: 80%;
+    max-width: 85%;
     position: relative;
-    line-height: 1.5;
+    line-height: 1.6;
     animation: fadeIn 0.3s ease;
+    box-shadow: var(--shadow);
 }
 
 @keyframes fadeIn {
@@ -130,11 +136,12 @@ h1 {
 }
 
 .message-header {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 1.05rem;
 }
 
 .user-header {
@@ -142,38 +149,40 @@ h1 {
 }
 
 .bot-header {
-    color: var(--primary);
+    color: var(--primary-dark);
 }
 
 /* Input area */
 .input-container {
     background: white;
     padding: 1.25rem;
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
 }
 
 .stTextInput input {
-    padding: 0.85rem 1rem !important;
-    border-radius: 12px !important;
+    padding: 1rem 1.25rem !important;
+    border-radius: 10px !important;
     border: 1px solid var(--border) !important;
+    font-size: 1rem !important;
 }
 
 .stButton button {
-    background: linear-gradient(45deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+    background: var(--primary) !important;
     color: white !important;
     border: none !important;
-    border-radius: 12px !important;
-    padding: 0.75rem 1.5rem !important;
+    border-radius: 10px !important;
+    padding: 0.85rem 1.75rem !important;
     font-weight: 600 !important;
     transition: all 0.2s ease !important;
     box-shadow: var(--shadow) !important;
+    height: 100%;
 }
 
 .stButton button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 14px rgba(79, 70, 229, 0.25) !important;
+    background: var(--primary-dark) !important;
+    transform: translateY(-1px);
 }
 
 .stButton button:active {
@@ -191,7 +200,7 @@ h1 {
 }
 
 .chat-box::-webkit-scrollbar-thumb {
-    background: #c7d2fe;
+    background: #bfdbfe;
     border-radius: 4px;
 }
 
@@ -205,30 +214,72 @@ h1 {
     padding: 1rem;
     color: var(--text-light);
     font-size: 0.85rem;
-    margin-top: auto;
+    margin-top: 0.5rem;
+}
+
+/* Toggle button */
+.sidebar-toggle {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 100;
+    background: var(--primary) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 0.75rem !important;
+    min-width: auto !important;
+}
+
+.sidebar-toggle:hover {
+    background: var(--primary-dark) !important;
+}
+
+/* Welcome message */
+.welcome-message {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.welcome-message h3 {
+    color: white !important;
+    margin-bottom: 0.5rem !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# App title
-st.markdown("<h1>⚖️ iLegalBot - AI Legal Assistant</h1>",
-            unsafe_allow_html=True)
-st.caption("<p style='text-align:center; color:#6b7280; margin-bottom:2rem;'>Your specialized assistant for Indian legal queries</p>",
+# App title and header
+st.markdown("<h1>⚖️ iLegalBot</h1>", unsafe_allow_html=True)
+st.caption("<p style='text-align:center; color:#64748b; margin-bottom:1.5rem; font-size:1.1rem;'>AI Legal Assistant for Indian Law</p>",
            unsafe_allow_html=True)
 
+# Sidebar toggle button
+if st.button("☰", key="sidebar-toggle", help="Toggle sidebar"):
+    st.session_state.sidebar_state = not st.session_state.get(
+        "sidebar_state", True)
+
 # Sidebar configuration
+sidebar_state = st.session_state.get("sidebar_state", True)
 with st.sidebar:
-    st.markdown("<h1>Configuration</h1>", unsafe_allow_html=True)
+    st.markdown("<h2>Configuration</h2>", unsafe_allow_html=True)
     model_choice = st.selectbox("Choose AI Model", ["Gemini", "OpenAI"])
     st.markdown("---")
     st.markdown("""
-    <div style='margin-top:2rem;'>
-        <p style='font-size:0.9rem;'>This specialized AI assistant provides legal information related to Indian law. Always consult a qualified legal professional for official advice.</p>
+    <div style='margin-top:1.5rem;'>
+        <p style='font-size:0.95rem; color: var(--text);'>
+            This specialized AI assistant provides legal information related to Indian law. 
+            <span style='color: var(--primary-dark); font-weight: 600;'>
+                Always consult a qualified legal professional for official advice.
+            </span>
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
 # Initialize retriever once
-tmp = None
 
 
 @st.cache_resource
@@ -312,11 +363,9 @@ st.markdown("<div class='chat-box'>", unsafe_allow_html=True)
 
 if not st.session_state.history:
     st.markdown("""
-    <div class='bot-message message'>
-        <div class='message-header bot-header'>
-            <span>iLegalBot</span>
-        </div>
-        <div>Hello! I'm your specialized legal assistant for Indian law. How can I help you today?</div>
+    <div class='welcome-message'>
+        <h3>Hello! I'm your specialized legal assistant for Indian law</h3>
+        <p>How can I help you today? Ask me anything about Indian legal matters.</p>
     </div>
     """, unsafe_allow_html=True)
 
