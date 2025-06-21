@@ -94,8 +94,8 @@ iLegalBot is a smart, AI-driven chatbot designed to streamline legal service acc
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/abdurrahmanshkh/ilegalbot.git
-cd iLegalBot
+git clone https://github.com/abdurrahmanshkh/legal_chatbot_backend.git
+cd legal_chatbot_backend
 ```
 
 ### Install Dependencies
