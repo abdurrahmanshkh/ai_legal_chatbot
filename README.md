@@ -189,6 +189,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-**Project Maintainer**: Your Name ([as31@somaiya.edu](mailto:as31@somaiya.edu))
+**Project Maintainer**: Abdur Rehman Shaikh ([as31@somaiya.edu](mailto:as31@somaiya.edu))
 
 Feel free to reach out for any questions or partnership opportunities.")
